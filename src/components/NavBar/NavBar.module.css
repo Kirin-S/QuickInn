@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400&display=swap');
+
+header {
+  font-family: 'Outfit';
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 100px;
+  width: 100%;
+  background: #586adf;
+  box-sizing: border-box;
+}
+
+.logo {
+  padding-top: 5px;
+  height: 40px;
+  width: 170px;
+}
+
+.navBar {
+  float: right;
+}
+
+.navBar ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navBar ul li {
+  list-style: none;
+}
+
+.navBar ul li a {
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+.navBar ul li a:hover {
+  background: #262e64;
+  border-radius: 10px;
+}
+
+.menuToggle {
+  float: right;
+  width: 20px;
+  line-height: 50px;
+  cursor: pointer;
+  display: block;
+  margin-right: 5px;
+  margin-top: 14px;
+}
+
+@media (max-width: 1080px) {
+
+  header {
+    padding: 0 20px;
+  }
+
+  .menuToggle {
+    display: block;
+  }
+
+  .navBar {
+    position: absolute;
+    width: 100%;
+    height: calc(100vb - 50px);
+    background-color: rgb(51, 51, 51);
+    top: 50px;
+    left: -100%;
+    transition: 0.5s;
+  }
+
+  .navBar.active {
+    left: 0;
+  }
+
+  .navBar ul {
+    display: block;
+    text-align: center;
+  }
+
+  .navBar ul li a {
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+  }
+  
+}
+
+
+
+
+
+
+
+/* .navBar {
+  background: #586adf;
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+}
+
+.navBar ul {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  list-style: none;
+}
+
+.navBar ul li {
+  width: 200px;
+  margin: 15px;
+  padding: 15px;
+}
+
+.navBar ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.navBar ul li:hover {
+  background: #262e64;
+  border-radius: 10px;
+}
+
+.subMenu {
+  display: none;
+}
+
+.navBar ul li:hover .subMenu {
+  display: block;
+  position: absolute;
+  background: #262e64;
+  margin-left: -15px;
+  border-radius: 10px;
+}
+
+.navBar ul li:hover .subMenu ul {
+  display: block;
+  margin: 10px;
+}
+
+.navBar ul li:hover .subMenu ul li {
+  width: 160px;
+  padding: 10px;
+  background: transparent;
+  border-radius: 0;
+  text-align: center;
+} */

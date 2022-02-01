@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400&display=swap');
+
+.search {
+  position: absolute;
+  /* margin-top: 70px; */
+  margin-left: 15px;
+  width: 19%
+}
+
+.input {
+  font-family: 'Outfit';
+  font-size: 24px;
+  border: 2px solid #586adf;
+  border-radius: 10px;
+  padding-left: 20px;
+  outline: none;
+  height: 40px;
+  width: 90%;
+}
