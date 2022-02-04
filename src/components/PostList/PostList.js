@@ -3,9 +3,9 @@ import React, { useState } from "react";
 
 function PostList() {
   let [posts, setPosts] = useState([
-    {id: 1, title: "BAN", price: "Hello", url: "localhost:3000/#", country: "SOME_COUNTRY", city: "SOME_CITY", review: "10", review_word: "SUPER"},
-    {id: 2, title: "MISS", price: "World", url: "localhost:3000/#", country: "SOME_COUNTRY", city: "SOME_CITY", review: "10", review_word: "SUPER"},
-    {id: 3, title: "HOTEL", price: "Of Hotels", url: "localhost:3000/#", country: "SOME_COUNTRY", city: "SOME_CITY", review: "10", review_word: "SUPER"},
+    {id: 1, title: "Ban", price: "100", url: "localhost:3000/#", country: "SOME_COUNTRY", city: "SOME_CITY", review: "10", review_word: "SUPER"},
+    {id: 2, title: "Miss", price: "100", url: "localhost:3000/#", country: "SOME_COUNTRY", city: "SOME_CITY", review: "10", review_word: "SUPER"},
+    {id: 3, title: "Hotel", price: "1000", url: "localhost:3000/#", country: "SOME_COUNTRY", city: "SOME_CITY", review: "10", review_word: "SUPER"},
   ]);
 
   // const axios = require("axios").default;

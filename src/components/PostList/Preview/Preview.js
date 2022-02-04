@@ -1,32 +1,40 @@
 import styles from "./Preview.module.css";
 import heart from "./heart.png";
 
+import test from "./test.jpg";
+
 function Preview(props) {
   return (
     <div className={styles.post}>
       <div className={styles.post_content}>
-        <img src={props.post.picture} alt="НЕТ КАРТИНКИ" className={styles.picture}/>
+        <div className={styles.post_img}>
+          {/* <img src={props.post.picture} alt="НЕТ КАРТИНКИ" className={styles.picture} /> */}
+          <img src={test} alt="НЕТ КАРТИНКИ" className={styles.picture} />
+        </div>
 
         <div className={styles.post_info}>
-
-          <h3>
-            <a href={props.post.url}>{props.post.title}</a>
-          </h3>
-
-          <p>{props.post.price}</p>
 
           <div className={styles.location}>
             <p>{props.post.country}</p>
             <p>{props.post.city}</p>
           </div>
 
-          <div className={styles.review}>
-            <p>{props.post.review}</p>
-            <p>{props.post.review_word}</p>
+          <h2>
+            <a href={props.post.url}>{props.post.title}</a>
+          </h2>
+
+          <div className={styles.price}>
+            <p>{props.post.price}</p>
           </div>
-          
+
+          <div className={styles.review}>
+            <p>{props.post.review_word}</p>
+            <p>{props.post.review}</p>
+          </div>
+
         </div>
-        <div className="post_btns">
+
+        <div className={styles.btns}>
           <img src={heart} className={styles.heart} alt="НЕТ ИКОНКИ" />
         </div>
       </div>
