@@ -1,12 +1,17 @@
 import Preview from "./Preview/Preview";
-import React, { useState } from "react";
+import React, { useState, useMemo, useContext } from "react";
+import { DestType } from "../../context";
 
-function PostList() {
+function PostList(props) {
   let [posts, setPosts] = useState([
-    {id: 1, title: "Ban", price: "100", url: "localhost:3000/#", country: "SOME_COUNTRY", city: "SOME_CITY", review: "10", review_word: "SUPER"},
-    {id: 2, title: "Miss", price: "100", url: "localhost:3000/#", country: "SOME_COUNTRY", city: "SOME_CITY", review: "10", review_word: "SUPER"},
-    {id: 3, title: "Hotel", price: "1000", url: "localhost:3000/#", country: "SOME_COUNTRY", city: "SOME_CITY", review: "10", review_word: "SUPER"},
+    {id: 4, title: "Ban", price: "100", url: "localhost:3000/#", country: "SOME_COUNTRY", city: "SOME_CITY", review: "10", review_word: "SUPER"},
+    {id: 2, title: "Miss", price: "100", url: "localhost:3000/#", country: "England", city: "SOME_CITY", review: "10", review_word: "SUPER"},
+    {id: 3, title: "Hotel", price: "1000", url: "localhost:3000/#", country: "USA", city: "SOME_CITY", review: "10", review_word: "SUPER"},
   ]);
+
+  const {destType} = useContext(DestType);
+
+  console.log("ID: " + destType);
 
   // const axios = require("axios").default;
 
@@ -64,9 +69,16 @@ function PostList() {
   //     console.error(error);
   //   });
 
+  const searchedPosts = useMemo(() => {
+    if (props.searchQuery) {
+      return posts.filter(post => post.country.toLocaleLowerCase().includes(props.searchQuery.toLocaleLowerCase()));
+    }
+    return posts;
+  }, [props.searchQuery, posts]);
+
   return (
     <div>
-      {posts.map((post) => (
+      {searchedPosts.map((post) => (
         <Preview post={post} key={post.id} />
       ))}
     </div>
