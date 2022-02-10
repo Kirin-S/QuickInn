@@ -50,6 +50,7 @@ header {
   display: block;
   margin-right: 5px;
   margin-top: 14px;
+  display: none;
 }
 
 @media (max-width: 1080px) {
@@ -66,15 +67,10 @@ header {
   .navBar {
     position: absolute;
     width: 100%;
-    height: calc(100vb - 50px);
-    background-color: rgb(51, 51, 51);
+    height: calc(100vh - 50px);
     top: 50px;
     left: -100%;
     transition: 0.5s;
-  }
-
-  .navBar.active {
-    left: 0;
   }
 
   .navBar ul {
@@ -87,64 +83,3 @@ header {
   }
   
 }
-
-
-
-
-
-
-
-/* .navBar {
-  background: #586adf;
-  text-align: center;
-  font-family: 'Outfit', sans-serif;
-  font-size: 20px;
-}
-
-.navBar ul {
-  margin: 0;
-  padding: 0;
-  display: inline-flex;
-  list-style: none;
-}
-
-.navBar ul li {
-  width: 200px;
-  margin: 15px;
-  padding: 15px;
-}
-
-.navBar ul li a {
-  text-decoration: none;
-  color: #fff;
-}
-
-.navBar ul li:hover {
-  background: #262e64;
-  border-radius: 10px;
-}
-
-.subMenu {
-  display: none;
-}
-
-.navBar ul li:hover .subMenu {
-  display: block;
-  position: absolute;
-  background: #262e64;
-  margin-left: -15px;
-  border-radius: 10px;
-}
-
-.navBar ul li:hover .subMenu ul {
-  display: block;
-  margin: 10px;
-}
-
-.navBar ul li:hover .subMenu ul li {
-  width: 160px;
-  padding: 10px;
-  background: transparent;
-  border-radius: 0;
-  text-align: center;
-} */

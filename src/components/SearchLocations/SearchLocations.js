@@ -1,66 +1,68 @@
 import styles from './SearchLoc.module.css';
 import PlacesTips from "./PlacesTips/PlacesTips";
 
-import { useContext, useState, useMemo } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { DestType } from'../../context';
 
 function SearchLocations(props) {
+  // Состояние массива локаций
   const [locations, setLocations] = useState([
-    {name: "Berlin", region: "Central", country: "German", dest_id: "222222"},
-    {name: "London", region: "Region", country: "England", dest_id: "777777"},
+    // {name: "Berlin", region: "Central", country: "German", dest_id: "222222"},
+    // {name: "London", region: "Region", country: "England", dest_id: "777777"},
   ]);
 
+  // Контекст для ID локации
   const {destType, setDestType} = useContext(DestType);
 
-  const axios = require("axios").default;
+  // Задержка вызова API
+  const debounce = useDebounce(props.value, 500);
 
-  // const options = {
-  //   method: 'GET',
-  //   url: 'https://booking-com.p.rapidapi.com/v1/hotels/locations',
-  //   params: {locale: 'en-gb', name: props.value},
-  //   headers: {
-  //     'x-rapidapi-host': 'booking-com.p.rapidapi.com',
-  //     'x-rapidapi-key': 'c8366f1f29mshd460b0aa32692f7p1371b8jsn0ea87e1f4436'
-  //   }
-  // };
+  useEffect(() => {
+    if (debounce) {
 
-  // axios.request(options).then(function (response) {
-  //   let districtArr = [];
+      const axios = require("axios").default;
 
-  //   console.log(response.data.length);
+      const options = {
+        method: 'GET',
+        url: 'https://booking-com.p.rapidapi.com/v1/hotels/locations',
+        params: {locale: 'en-gb', name: props.value},
+        headers: {
+          'x-rapidapi-host': 'booking-com.p.rapidapi.com',
+          'x-rapidapi-key': 'c8366f1f29mshd460b0aa32692f7p1371b8jsn0ea87e1f4436'
+        }
+      };
 
-  //   response.data.forEach((district) => {
-  //     const result = {
-  //       name: district.name,
-  //       region: district.region,
-  //       country: district.country,
-  //       dest_id: district.dest_id,
-  //     }
+      axios.request(options).then(function (response) {
+        let districtArr = [];
 
-  //     districtArr.push(result);
-  //   });
+        console.log(response.data.length);
 
-  //   setLocations([...districtArr]);
-  // }).catch(function (error) {
-  //   console.error(error);
-  // });
+        response.data.forEach((district) => {
+          const result = {
+            name: district.name,
+            region: district.region,
+            country: district.country,
+            dest_id: district.dest_id,
+          }
+
+          districtArr.push(result);
+        });
+
+        setLocations([...districtArr]);
+      }).catch(function (error) {
+        console.error(error);
+      });
+
+    }
+  }, [debounce]);
 
 
 
-  // const queryLocations = useMemo(() => {
-  //   if (props.value) {
-  //     return locations;
-  //   }
-  //   return locations;
-  // }, [props.value, locations]);
-
-
-  function CONTEXT() {
+  function getLocationID() {
     const loc = locations.find(loc => loc.name.toLowerCase().includes(props.value.toLowerCase()));
 
     setDestType(loc.dest_id);
   }
-
 
   return (
     <div className={styles.search}>
@@ -71,10 +73,30 @@ function SearchLocations(props) {
       />
 
       {locations.map(location => (
-        <button onClick={CONTEXT} key={location.dest_id}><PlacesTips district={location} key={location.dest_id} /> </button>
+        <button onClick={getLocationID} key={location.dest_id}><PlacesTips district={location} key={location.dest_id} /> </button>
       ))}
     </div>
   );
+}
+
+// Хук для задержки запроса к АПИ
+function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(
+    () => {
+      const handler = setTimeout(() => {
+        setDebouncedValue(value);
+      }, delay);
+
+      return () => {
+        clearTimeout(handler);
+      };
+    },
+    [value, delay]
+  );
+
+  return debouncedValue;
 }
 
 export default SearchLocations;
