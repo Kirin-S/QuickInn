@@ -3,14 +3,13 @@ import React, { useState } from 'react';
 import NavBar from './components/NavBar/NavBar';
 import SearchLocations from './components/SearchLocations/SearchLocations';
 import PostList from './components/PostList/PostList';
-// import Hotel from "./components/Hotel/Hotel"
 import { DestType } from './context';
 
 import './App.css';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [destType, setDestType] = useState('');
+  const [destType, setDestType] = useState('-553173'); // Czech ID
 
   return (
     <div className="App">
@@ -23,6 +22,7 @@ function App() {
         <NavBar />
         <SearchLocations
           value={searchQuery}
+          setSearchQuery={setSearchQuery}
           onChange={e => setSearchQuery(e.target.value)}
         />
         <PostList searchQuery={searchQuery} />

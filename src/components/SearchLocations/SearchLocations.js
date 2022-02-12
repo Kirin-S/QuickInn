@@ -1,18 +1,19 @@
 import styles from './SearchLoc.module.css';
-import PlacesTips from "./PlacesTips/PlacesTips";
 
 import { useContext, useEffect, useState } from 'react';
-import { DestType } from'../../context';
+import { DestType } from '../../context';
 
 function SearchLocations(props) {
   // Состояние массива локаций
   const [locations, setLocations] = useState([
-    // {name: "Berlin", region: "Central", country: "German", dest_id: "222222"},
-    // {name: "London", region: "Region", country: "England", dest_id: "777777"},
+    // { name: "Berlin", region: "Region", country: "German", dest_id: "111111" },
+    // { name: "London", region: "Region", country: "England", dest_id: "333333" },
+    // { name: "Washington", region: "Region", country: "USA", dest_id: "555555" },
+    // { name: "Moscow", region: "Region", country: "Russia", dest_id: "777777" },
   ]);
 
   // Контекст для ID локации
-  const {destType, setDestType} = useContext(DestType);
+  const { destType, setDestType } = useContext(DestType);
 
   // Задержка вызова API
   const debounce = useDebounce(props.value, 500);
@@ -35,8 +36,6 @@ function SearchLocations(props) {
       axios.request(options).then(function (response) {
         let districtArr = [];
 
-        console.log(response.data.length);
-
         response.data.forEach((district) => {
           const result = {
             name: district.name,
@@ -56,12 +55,9 @@ function SearchLocations(props) {
     }
   }, [debounce]);
 
-
-
-  function getLocationID() {
-    const loc = locations.find(loc => loc.name.toLowerCase().includes(props.value.toLowerCase()));
-
-    setDestType(loc.dest_id);
+  function onLocationClick(location) {
+    setDestType(location.dest_id);
+    props.setSearchQuery(location.name + ", " + location.region + ", " + location.country);
   }
 
   return (
@@ -73,11 +69,15 @@ function SearchLocations(props) {
       />
 
       {locations.map(location => (
-        <button onClick={getLocationID} key={location.dest_id}><PlacesTips district={location} key={location.dest_id} /> </button>
+        <button onClick={() => onLocationClick(location)} key={location.dest_id} className={styles.btn}>
+          <h3>{location.name}</h3>
+          <p>{location.region}, {location.country}</p>
+        </button>
       ))}
     </div>
   );
 }
+
 
 // Хук для задержки запроса к АПИ
 function useDebounce(value, delay) {

@@ -8,8 +8,8 @@ function Preview(props) {
     <div className={styles.post}>
       <div className={styles.post_content}>
         <div className={styles.post_img}>
-          {/* <img src={props.post.picture} alt="НЕТ КАРТИНКИ" className={styles.picture} /> */}
-          <img src={test} alt="НЕТ КАРТИНКИ" className={styles.picture} />
+          <img src={props.post.picture} alt="НЕТ КАРТИНКИ" className={styles.picture} />
+          {/* <img src={test} alt="НЕТ КАРТИНКИ" className={styles.picture} /> */}
         </div>
 
         <div className={styles.post_info}>

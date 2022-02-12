@@ -1,8 +1,8 @@
 .search {
   margin-top: 70px;
   margin-left: 15px;
-  width: 25%;
-  max-width: 25%;
+  width: 30%;
+  max-width: 30%;
 }
 
 .input {
@@ -13,6 +13,17 @@
   outline: none;
   height: 40px;
   width: 90%;
+}
+
+.input::placeholder {
+  text-align: center;
+}
+
+.btn {
+  width: 90%;
+  padding: 2px;
+  border: 1px solid #586adf;
+  border-radius: 8px;
 }
 
 @media (max-width: 768px) {

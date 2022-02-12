@@ -2,19 +2,14 @@
   font-size: 14px;
   display: flex;
   width: 100%;
-  justify-content: center;
+  /* justify-content: center; */
   padding: 0 1.5rem;
   height: 350px;
   margin-bottom: 20px;
 }
 
-.post:first-child {
-  margin-top: -40px;
-}
-
 .post_content {
-  margin-left: 30%;
-  width: 60%;
+  width: 100%;
   padding: 5rem 1.5rem;
   background-color: #fff;
   box-shadow: 0 1.4rem 8rem rgba(0, 0, 0, 0.2);
