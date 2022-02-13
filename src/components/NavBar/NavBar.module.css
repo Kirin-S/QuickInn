@@ -1,5 +1,5 @@
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   padding: 0 100px;
@@ -39,19 +39,14 @@ header {
 
 .navBar ul li a:hover {
   background: #262e64;
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 .menuToggle {
-  float: right;
-  width: 20px;
-  line-height: 50px;
-  cursor: pointer;
-  display: block;
-  margin-right: 5px;
-  margin-top: 14px;
   display: none;
 }
+
+
 
 @media (max-width: 1080px) {
 
@@ -61,6 +56,13 @@ header {
   }
 
   .menuToggle {
+    color: #fff;
+    float: right;
+    font-size: 18px;
+    line-height: 50px;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-top: 0px;
     display: block;
   }
 

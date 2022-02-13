@@ -1,15 +1,12 @@
 import styles from "./Preview.module.css";
 import heart from "./heart.png";
 
-import test from "./test.jpg";
-
 function Preview(props) {
   return (
     <div className={styles.post}>
       <div className={styles.post_content}>
         <div className={styles.post_img}>
           <img src={props.post.picture} alt="НЕТ КАРТИНКИ" className={styles.picture} />
-          {/* <img src={test} alt="НЕТ КАРТИНКИ" className={styles.picture} /> */}
         </div>
 
         <div className={styles.post_info}>
@@ -18,9 +15,9 @@ function Preview(props) {
             <p>{props.post.country}</p>
             <p>{props.post.city}</p>
           </div>
-
+          
           <h2>
-            <a href={props.post.url}>{props.post.title}</a>
+            <a href={props.post.id}>{props.post.title}</a>
           </h2>
 
           <div className={styles.price}>
