@@ -1,3 +1,3 @@
-import {createContext} from 'react';
+import { createContext } from 'react';
 
-export const DestType = createContext(null);
+export const HotelID = createContext(null);

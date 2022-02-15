@@ -1,7 +1,17 @@
 import styles from "./Preview.module.css";
 import heart from "./heart.png";
 
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { HotelID } from "../../../context/index";
+
 function Preview(props) {
+  const { hotel_id, setHotelID } = useContext(HotelID);
+
+  function onLinkClick() {
+    setHotelID(props.post.id);
+  }
+
   return (
     <div className={styles.post}>
       <div className={styles.post_content}>
@@ -17,7 +27,7 @@ function Preview(props) {
           </div>
           
           <h2>
-            <a href={props.post.id}>{props.post.title}</a>
+            <Link to={`/hotels/${props.pageNumber}/${props.post.id}`} onClick={onLinkClick}>{props.post.title}</Link>
           </h2>
 
           <div className={styles.price}>

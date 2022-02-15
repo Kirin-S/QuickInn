@@ -2,6 +2,7 @@ import styles from './NavBar.module.css';
 import logo from './logo.png';
 
 import { useRef, useState} from 'react';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
   const visability = useRef();
@@ -23,10 +24,10 @@ function NavBar() {
 
   return (
     <header>
-      <img src={logo} className={styles.logo}/>
+      <Link to="/"><img src={logo} className={styles.logo}/></Link>
       <div className={styles.navBar} ref={visability}>
         <ul>
-          <li><a href="#">Hotels</a></li>
+          <li><Link to="/hotels/0">Hotels</Link></li>
           <li><a href="#">Title 3</a></li>
           <li><a href="#">Title 4</a></li>
           <li><a href="#">Title 5</a></li>
