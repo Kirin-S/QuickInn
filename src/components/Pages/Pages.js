@@ -13,8 +13,17 @@ function Pages() {
   return (
     <Routes>
       <Route path="/" element={<MainPage />}/>
-      <Route path={`/hotels/${pageNumber}/`} element={<HotelList pageNumber={pageNumber} setPageNumber={setPageNumber}/>} />
-      <Route path={`/hotels/${pageNumber}/${hotel_id}/`} element={<Hotel idOfHotel={hotel_id}/>} />
+      <Route path={`/hotels/${pageNumber}/`} element={
+        <HotelList
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+        />}
+      />
+      <Route path={`/hotels/${pageNumber}/${hotel_id}/`} element={
+        <Hotel
+          idOfHotel={hotel_id}
+        />}
+      />
    </Routes>
   );
 }

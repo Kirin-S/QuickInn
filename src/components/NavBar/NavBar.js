@@ -17,7 +17,7 @@ function NavBar() {
     else {
       setVisible(true);
       visability.current.style.left = 0;
-      visability.current.style.background = "#616161";
+      visability.current.style.background = "#ACB5EF";
       visability.current.style["z-index"] = 10;
     }
   }
@@ -27,7 +27,7 @@ function NavBar() {
       <Link to="/"><img src={logo} className={styles.logo}/></Link>
       <div className={styles.navBar} ref={visability}>
         <ul>
-          <li><Link to="/hotels/0">Hotels</Link></li>
+          <li><Link to="/hotels/0" onClick={curtain}>Hotels</Link></li>
           <li><a href="#">Title 3</a></li>
           <li><a href="#">Title 4</a></li>
           <li><a href="#">Title 5</a></li>

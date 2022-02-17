@@ -10,7 +10,8 @@ header {
 
 .logo {
   padding-top: 5px;
-  height: 40px;
+  height: 45px;
+  line-height: 45px;
   width: 170px;
 }
 
@@ -45,8 +46,6 @@ header {
 .menuToggle {
   display: none;
 }
-
-
 
 @media (max-width: 1080px) {
 

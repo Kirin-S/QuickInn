@@ -31,7 +31,7 @@ function Preview(props) {
           </h2>
 
           <div className={styles.price}>
-            <p>{props.post.price}</p>
+            <p>{props.post.price} PER NIGHT</p>
           </div>
 
           <div className={styles.review}>

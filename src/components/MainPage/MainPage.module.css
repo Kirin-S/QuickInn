@@ -1,5 +1,119 @@
-.h1 {
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap');
+
+.intro {
   position: absolute;
-  top: 50%;
-  left: 35%;
+  width: 50%;
+  height: 40%;
+  left: 25%;
+  top: 100px;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.hymn {
+  position: absolute;
+  font-family: "Outfit";
+  width: 100%;
+  height: 180px;
+  /* left: 10%; */
+  top: 10%;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 60px;
+  text-align: center;
+  letter-spacing: -1px;
+  color: #ACB5EF;
+}
+
+.title {
+  position: absolute;
+  font-family: "Outfit";
+  width: 60%;
+  height: 180px;
+  left: 20%;
+  top: 22%;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 60px;
+  text-align: center;
+  letter-spacing: -1px;
+  color: #ACB5EF;
+}
+
+.ad {
+  position: absolute;
+  width: 80%;
+  height: 50px;
+  left: 10%;
+  top: 60%;
+  font-family: "Outfit";
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -1px;
+  color: rgba(88, 106, 223, 0.5);
+}
+
+.toHotels {
+  display: flex;
+  align-items: center;
+  padding: 30px 50px;
+  position: absolute;
+  width: 40%;
+  height: 50px;
+  left: 30%;
+  top: 75%;
+  background: #586ADF;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.toHotels p {
+  position: static;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+@media (max-width: 1080px) {
+  .hymn {
+    width: 100%;
+    top: 5%;
+  }
+
+  .title {
+    top: 17%;
+  }
+
+  .toHotels {
+    width: 60%;
+    left: 20%;
+    top: 80%;
+  }
+}
+
+@media (max-width: 970px) {
+  .intro {
+    width: 70%;
+    left: 15%;
+    height: 40%;
+  }
+
+  .hymn {
+    top: 5%;
+    width: 100%;
+  }
+
+  .title {
+    top: 20%;
+  }
+
+  .ad {
+    top: 50%;
+  }
 }
