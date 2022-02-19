@@ -15,16 +15,20 @@ function NavBar() {
       visability.current.style.background = "#586adf";
     }
     else {
-      setVisible(true);
-      visability.current.style.left = 0;
-      visability.current.style.background = "#ACB5EF";
-      visability.current.style["z-index"] = 10;
+      // Чтобы не менялся цвет фона Нав Бара на широком дисплее
+      if (window.innerWidth < 1080) {
+        setVisible(true);
+        visability.current.style.left = 0;
+        visability.current.style.background = "#ACB5EF";
+        visability.current.style["z-index"] = 10;
+      }
     }
   }
 
   return (
     <header>
       <Link to="/"><img src={logo} className={styles.logo}/></Link>
+
       <div className={styles.navBar} ref={visability}>
         <ul>
           <li><Link to="/hotels/0" onClick={curtain}>Hotels</Link></li>
@@ -33,7 +37,8 @@ function NavBar() {
           <li><a href="#">Title 5</a></li>
         </ul>
       </div>
-      <h2 className={styles.menuToggle} onClick={curtain}> Menu</h2>
+
+      <h2 className={styles.menuToggle} onClick={curtain}>Menu</h2>
     </header>
   );
 }

@@ -1,58 +1,61 @@
 import styles from './SearchLoc.module.css';
 
 import { useEffect, useState } from 'react';
+import { useDispatch } from "react-redux";
 
 function SearchLocations(props) {
   // Состояние массива локаций
   const [locations, setLocations] = useState([
-    { name: "Berlin", region: "Region", country: "German", dest_id: "111111" },
-    { name: "London", region: "Region", country: "England", dest_id: "333333" },
-    { name: "Washington", region: "Region", country: "USA", dest_id: "555555" },
-    { name: "Moscow", region: "Region", country: "Russia", dest_id: "777777" },
-    { name: "Amsterdam", region: "Region", country: "Germany", dest_id: "999999" },
+    // { name: "Berlin", region: "Region", country: "German", dest_id: "111111" },
+    // { name: "London", region: "Region", country: "England", dest_id: "333333" },
+    // { name: "Washington", region: "Region", country: "USA", dest_id: "555555" },
+    // { name: "Moscow", region: "Region", country: "Russia", dest_id: "777777" },
+    // { name: "Amsterdam", region: "Region", country: "Germany", dest_id: "999999" },
   ]);
+
+  const dispatch = useDispatch();
 
   const [tips, setTips] = useState(false);
 
   // Задержка вызова API
   const debounce = useDebounce(props.value, 500);
 
-  // useEffect(() => {
-  //   if (debounce) {
+  useEffect(() => {
+    if (debounce) {
 
-  //     const axios = require("axios").default;
+      const axios = require("axios").default;
 
-  //     const options = {
-  //       method: 'GET',
-  //       url: 'https://booking-com.p.rapidapi.com/v1/hotels/locations',
-  //       params: {locale: 'en-gb', name: props.value},
-  //       headers: {
-  //         'x-rapidapi-host': 'booking-com.p.rapidapi.com',
-  //         'x-rapidapi-key': 'a853eeda66msh7bbaee4eb0fcb86p15483bjsn777e2843d937'
-  //       }
-  //     };
+      const options = {
+        method: 'GET',
+        url: 'https://booking-com.p.rapidapi.com/v1/hotels/locations',
+        params: {locale: 'en-gb', name: props.value},
+        headers: {
+          'x-rapidapi-host': 'booking-com.p.rapidapi.com',
+          'x-rapidapi-key': 'a853eeda66msh7bbaee4eb0fcb86p15483bjsn777e2843d937'
+        }
+      };
 
-  //     axios.request(options).then(function (response) {
-  //       let districtArr = [];
+      axios.request(options).then(function (response) {
+        let districtArr = [];
 
-  //       response.data.forEach((district) => {
-  //         const result = {
-  //           name: district.name,
-  //           region: district.region,
-  //           country: district.country,
-  //           dest_id: district.dest_id,
-  //         }
+        response.data.forEach((district) => {
+          const result = {
+            name: district.name,
+            region: district.region,
+            country: district.country,
+            dest_id: district.dest_id,
+          }
 
-  //         districtArr.push(result);
-  //       });
+          districtArr.push(result);
+        });
 
-  //       setLocations([...districtArr]);
-  //     }).catch(function (error) {
-  //       console.error(error);
-  //     });
+        setLocations([...districtArr]);
+      }).catch(function (error) {
+        console.error(error);
+      });
 
-  //   }
-  // }, [debounce]);
+    }
+  }, [debounce]);
 
   function onInputClick() {
     setTips(true);
@@ -68,7 +71,8 @@ function SearchLocations(props) {
   // ==============================================
 
   function onLocationClick(location) {
-    props.setDestType(location.dest_id);
+    // props.setDestType(location.dest_id);
+    dispatch({type: "getDestID", payload: location.dest_id});
     props.setSearchQuery(location.name + ", " + location.region + ", " + location.country);
     setTips(false);
   }

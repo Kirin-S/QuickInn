@@ -6,6 +6,29 @@ import HotelList from '../HotelList/HotelList';
 import Hotel from '../Hotel/Hotel';
 import MainPage from '../MainPage/MainPage';
 
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+
+
+const defaultState = {
+  destID: '-553173'     // Дефолт ID Праги
+}
+
+const reducer = (state = defaultState, action) => {
+  switch (action.type) {
+    case "getDestID":
+      return {...state, destID: action.payload}
+
+    default:
+      return state;
+  }
+}
+
+const store = createStore(reducer);
+
+
+
 function Pages() {
   const { hotel_id } = useContext(HotelID);
   const [pageNumber, setPageNumber] = useState(0);
@@ -13,12 +36,16 @@ function Pages() {
   return (
     <Routes>
       <Route path="/" element={<MainPage />}/>
-      <Route path={`/hotels/${pageNumber}/`} element={
-        <HotelList
-          pageNumber={pageNumber}
-          setPageNumber={setPageNumber}
-        />}
-      />
+      
+        <Route path={`/hotels/${pageNumber}/`} element={
+          <Provider store={store}>
+            <HotelList
+              pageNumber={pageNumber}
+              setPageNumber={setPageNumber}
+            />
+          </Provider>
+          }
+        />
       <Route path={`/hotels/${pageNumber}/${hotel_id}/`} element={
         <Hotel
           idOfHotel={hotel_id}

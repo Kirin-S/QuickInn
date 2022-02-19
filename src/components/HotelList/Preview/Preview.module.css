@@ -52,6 +52,7 @@
 h2 {
   text-transform: uppercase;
   margin: 1.5rem 0 1.5rem;
+  width: 150%;
 }
 
 .price {
