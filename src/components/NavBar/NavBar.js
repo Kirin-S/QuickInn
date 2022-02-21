@@ -8,6 +8,11 @@ function NavBar() {
   const visability = useRef();
   const [visible, setVisible] = useState(false);
 
+
+  /** Коммент сделан с помощью расширения AI Doc Writer
+ * If the curtain is visible, then set it to not visible and move it off the screen. If the curtain is
+ * not visible, then set it to visible and move it to the screen
+ */
   function curtain() {
     if (visible) {
       setVisible(false);

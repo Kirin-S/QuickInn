@@ -38,6 +38,9 @@ function SearchLocations(props) {
       axios.request(options).then(function (response) {
         let districtArr = [];
 
+        // Коммент, сделанный с помощью расширения AI Doc Writer
+        /* It's a loop that iterates over the response.data array and creates an object
+        with the district's name, region, country and dest_id. */
         response.data.forEach((district) => {
           const result = {
             name: district.name,
@@ -70,8 +73,8 @@ function SearchLocations(props) {
   }
   // ==============================================
 
+  // Функция, устанавливающая параметры поиска и надпись в строке поиска
   function onLocationClick(location) {
-    // props.setDestType(location.dest_id);
     dispatch({type: "getDestID", payload: location.dest_id});
     props.setSearchQuery(location.name + ", " + location.region + ", " + location.country);
     setTips(false);

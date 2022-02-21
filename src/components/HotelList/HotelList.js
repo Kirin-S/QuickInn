@@ -80,12 +80,14 @@ function HotelList(props) {
       });
   }, [destID, props.pageNumber]);
 
+  // Переключает страницу вперёд при клике на правую стрелку. Перемещает область просмотра вверх.  
   function nextPage() {
     props.setPageNumber(props.pageNumber + 1);
 
     document.documentElement.scrollTop = 0;
   }
 
+  // Переключает страницу назад при клике на левую стрелку. Перемещает область просмотра вверх.
   function previousPage() {
     props.setPageNumber(props.pageNumber - 1);
 
@@ -99,7 +101,6 @@ function HotelList(props) {
         value={searchQuery}
         setSearchQuery={setSearchQuery}
         onChange={e => setSearchQuery(e.target.value)}
-        // setDestType={setDestType}
       />
 
       <div className={styles.hotels}>
