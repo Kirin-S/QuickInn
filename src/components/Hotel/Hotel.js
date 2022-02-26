@@ -18,7 +18,7 @@ function Hotel(props) {
       params: {hotel_id: props.idOfHotel, locale: 'en-gb'},
       headers: {
         'x-rapidapi-host': 'booking-com.p.rapidapi.com',
-        'x-rapidapi-key': 'a853eeda66msh7bbaee4eb0fcb86p15483bjsn777e2843d937'
+        'x-rapidapi-key': '8ff3fddc21mshbb4f6d5db856a07p1cbb3ejsn3fa5b0ac771f'
       }
     };
 
@@ -40,10 +40,10 @@ function Hotel(props) {
         }
       }
 
-      setData({...info});
-    }).catch(function (error) {
-      console.error(error);
-    });
+  //     setData({...info});
+  //   }).catch(function (error) {
+  //     console.error(error);
+  //   });
 
   //   const phOptions = {
   //     method: 'GET',
@@ -51,7 +51,7 @@ function Hotel(props) {
   //     params: {hotel_id: props.idOfHotel, locale: 'en-gb'},
   //     headers: {
   //       'x-rapidapi-host': 'booking-com.p.rapidapi.com',
-  //       'x-rapidapi-key': 'a853eeda66msh7bbaee4eb0fcb86p15483bjsn777e2843d937'
+  //       'x-rapidapi-key': '8ff3fddc21mshbb4f6d5db856a07p1cbb3ejsn3fa5b0ac771f'
   //     }
   //   };
     
@@ -65,7 +65,7 @@ function Hotel(props) {
   //     setPhotos([...queryPhotos]);
   //   }).catch(function (error) {
   //     console.error(error);
-  //   });
+    });
   }, []);
 
   return (
@@ -74,7 +74,7 @@ function Hotel(props) {
 
         <div className={styles.title}>{data.title}</div>
 
-        {/* <div className={styles.photos}>
+        <div className={styles.photos}>
           <img src={photos[0]} alt="Нет картинки" className={styles.currentPhoto} />
           <div className={styles.leftArrowBtn}>
             <LeftArrowBtn />
@@ -82,7 +82,7 @@ function Hotel(props) {
           <div className={styles.RightArrowBtn}>
             <RightArrowBtn />
           </div>
-        </div> */}
+        </div>
 
         <div className={styles.review}>RATING {data.review}</div>
 

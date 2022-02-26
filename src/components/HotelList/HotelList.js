@@ -48,7 +48,7 @@ function HotelList(props) {
       },
       headers: {
         'x-rapidapi-host': 'booking-com.p.rapidapi.com',
-        'x-rapidapi-key': 'a853eeda66msh7bbaee4eb0fcb86p15483bjsn777e2843d937'
+        'x-rapidapi-key': '8ff3fddc21mshbb4f6d5db856a07p1cbb3ejsn3fa5b0ac771f'
       }
     };
 
