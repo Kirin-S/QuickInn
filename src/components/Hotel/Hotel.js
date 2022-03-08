@@ -12,6 +12,7 @@ function Hotel(props) {
   useEffect(() => {
     const axios = require("axios").default;
 
+    // Запрос на описание отеля
     const options = {
       method: 'GET',
       url: 'https://booking-com.p.rapidapi.com/v1/hotels/data',
@@ -40,33 +41,42 @@ function Hotel(props) {
         }
       }
 
-  //     setData({...info});
-  //   }).catch(function (error) {
-  //     console.error(error);
-  //   });
+      setData({...info});
+    }).catch(function (error) {
+      console.error(error);
+    });
 
-  //   const phOptions = {
-  //     method: 'GET',
-  //     url: 'https://booking-com.p.rapidapi.com/v1/hotels/photos',
-  //     params: {hotel_id: props.idOfHotel, locale: 'en-gb'},
-  //     headers: {
-  //       'x-rapidapi-host': 'booking-com.p.rapidapi.com',
-  //       'x-rapidapi-key': '8ff3fddc21mshbb4f6d5db856a07p1cbb3ejsn3fa5b0ac771f'
-  //     }
-  //   };
+    // Запрос на фотки отеля
+    const photoOptions = {
+      method: 'GET',
+      url: 'https://booking-com.p.rapidapi.com/v1/hotels/photos',
+      params: {hotel_id: props.idOfHotel, locale: 'en-gb'},
+      headers: {
+        'x-rapidapi-host': 'booking-com.p.rapidapi.com',
+        'x-rapidapi-key': '8ff3fddc21mshbb4f6d5db856a07p1cbb3ejsn3fa5b0ac771f'
+      }
+    };
     
-  //   axios.request(phOptions).then(function (response) {
-  //     let queryPhotos = [];
+    axios.request(photoOptions).then(function (response) {
+      let queryPhotos = [];
 
-  //     response.data.map((photo) => {
-  //       queryPhotos.push(photo.url_max);
-  //     });
+      response.data.map((photo) => {
+        queryPhotos.push(photo.url_max);
+      });
       
-  //     setPhotos([...queryPhotos]);
-  //   }).catch(function (error) {
-  //     console.error(error);
+      setPhotos([...queryPhotos]);
+    }).catch(function (error) {
+      console.error(error);
     });
   }, []);
+
+  function onLeftArrowBtnClick() {
+    photoIndex > 0 ? setPhotoIndex(photoIndex - 1) : setPhotoIndex(photos.length - 1);
+  }
+
+  function onRightArrowBtnClick() {
+    photoIndex < photos.length ? setPhotoIndex(photoIndex + 1) : photoIndex = 0;
+  }
 
   return (
     <div className={styles.page}>
@@ -75,12 +85,12 @@ function Hotel(props) {
         <div className={styles.title}>{data.title}</div>
 
         <div className={styles.photos}>
-          <img src={photos[0]} alt="Нет картинки" className={styles.currentPhoto} />
+          <img src={photos[photoIndex]} alt="Нет картинки" className={styles.currentPhoto} />
           <div className={styles.leftArrowBtn}>
-            <LeftArrowBtn />
+            <LeftArrowBtn onClick={onLeftArrowBtnClick}/>
           </div>
           <div className={styles.RightArrowBtn}>
-            <RightArrowBtn />
+            <RightArrowBtn onClick={onRightArrowBtnClick}/>
           </div>
         </div>
 

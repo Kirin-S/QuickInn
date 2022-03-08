@@ -6,11 +6,11 @@ import { useDispatch } from "react-redux";
 function SearchLocations(props) {
   // Состояние массива локаций
   const [locations, setLocations] = useState([
-    // { name: "Berlin", region: "Region", country: "German", dest_id: "111111" },
-    // { name: "London", region: "Region", country: "England", dest_id: "333333" },
-    // { name: "Washington", region: "Region", country: "USA", dest_id: "555555" },
-    // { name: "Moscow", region: "Region", country: "Russia", dest_id: "777777" },
-    // { name: "Amsterdam", region: "Region", country: "Germany", dest_id: "999999" },
+    { name: "Berlin", region: "Region", country: "German", dest_id: "111111" },
+    { name: "London", region: "Region", country: "England", dest_id: "333333" },
+    { name: "Washington", region: "Region", country: "USA", dest_id: "555555" },
+    { name: "Moscow", region: "Region", country: "Russia", dest_id: "777777" },
+    { name: "Amsterdam", region: "Region", country: "Germany", dest_id: "999999" },
   ]);
 
   const dispatch = useDispatch();

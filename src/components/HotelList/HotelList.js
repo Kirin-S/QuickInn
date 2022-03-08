@@ -11,9 +11,9 @@ import { useSelector } from "react-redux";
 
 function HotelList(props) {
   let [posts, setPosts] = useState([
-    // {id: "987654", title: "Ban", price: "100", url: "localhost:3000/#", country: "SOME_COUNTRY", city: "SOME_CITY", review: "10", review_word: "SUPER"},
-    // {id: "654321", title: "Miss", price: "100", url: "localhost:3000/#", country: "England", city: "SOME_CITY", review: "10", review_word: "SUPER"},
-    // {id: "321987", title: "Hotel", price: "1000", url: "localhost:3000/#", country: "USA", city: "SOME_CITY", review: "10", review_word: "SUPER"},
+    {id: "987654", title: "Ban", price: "100", url: "localhost:3000/#", country: "SOME_COUNTRY", city: "SOME_CITY", review: "10", review_word: "SUPER"},
+    {id: "654321", title: "Miss", price: "100", url: "localhost:3000/#", country: "England", city: "SOME_CITY", review: "10", review_word: "SUPER"},
+    {id: "321987", title: "Hotel", price: "1000", url: "localhost:3000/#", country: "USA", city: "SOME_CITY", review: "10", review_word: "SUPER"},
   ]);
 
   const destID = useSelector((state) => state.destID);
@@ -121,15 +121,15 @@ function HotelList(props) {
                 {
                   props.pageNumber > 0
                   ?
-                    <Link to={`/hotels/${props.pageNumber - 1}/`} onClick={previousPage}>
-                      <LeftArrowBtn />
+                    <Link to={`/hotels/${props.pageNumber - 1}/`}>
+                      <LeftArrowBtn onClick={previousPage}/>
                     </Link>
                   :
                     null
                 }
                 <p>{props.pageNumber}</p>
-                <Link to={`/hotels/${props.pageNumber + 1}/`} onClick={nextPage}>
-                  <RightArrowBtn />
+                <Link to={`/hotels/${props.pageNumber + 1}/`}>
+                  <RightArrowBtn onClick={nextPage}/>
                 </Link>
               </div>         
             </div>
