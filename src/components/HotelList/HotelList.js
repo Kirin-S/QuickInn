@@ -3,6 +3,7 @@ import SearchLocations from "./SearchLocations/SearchLocations";
 import LeftArrowBtn from "../UI/ArrowBtns/LeftArrowBtn";
 import RightArrowBtn from "../UI/ArrowBtns/RightArrowBtn";
 import Loader from "../UI/Loader/Loader";
+import FilterList from "./FilterList/FilterList";
 import styles from "./HotelList.module.css";
 
 import React, { useState, useEffect } from "react";
@@ -21,64 +22,64 @@ function HotelList(props) {
   const [searchQuery, setSearchQuery] = useState('');  // Поиск
   const [isPostsLoading, setPostsLoading] = useState(false);
 
-  useEffect(() => {
-    setPostsLoading(true);
+  // useEffect(() => {
+  //   setPostsLoading(true);
 
-    const axios = require("axios").default;
+  //   const axios = require("axios").default;
 
-    const options = {
-      method: 'GET',
-      url: 'https://booking-com.p.rapidapi.com/v1/hotels/search',
-      params: {
-        locale: 'en-gb',
-        order_by: 'popularity',
-        filter_by_currency: 'AED',
-        dest_id: destID,
-        dest_type: 'city',
-        checkin_date: '2022-07-23',
-        checkout_date: '2022-07-24',
-        adults_number: '2',
-        room_number: '1',
-        units: 'metric',
-        children_ages: '5,0',
-        page_number: props.pageNumber,
-        categories_filter_ids: 'class::2,class::4,free_cancellation::1',
-        children_number: '2',
-        include_adjacency: 'true'
-      },
-      headers: {
-        'x-rapidapi-host': 'booking-com.p.rapidapi.com',
-        'x-rapidapi-key': '8ff3fddc21mshbb4f6d5db856a07p1cbb3ejsn3fa5b0ac771f'
-      }
-    };
+  //   const options = {
+  //     method: 'GET',
+  //     url: 'https://booking-com.p.rapidapi.com/v1/hotels/search',
+  //     params: {
+  //       locale: 'en-gb',
+  //       order_by: 'popularity',
+  //       filter_by_currency: 'AED',
+  //       dest_id: destID,
+  //       dest_type: 'city',
+  //       checkin_date: '2022-07-23',
+  //       checkout_date: '2022-07-24',
+  //       adults_number: '2',
+  //       room_number: '1',
+  //       units: 'metric',
+  //       children_ages: '5,0',
+  //       page_number: props.pageNumber,
+  //       categories_filter_ids: 'class::2,class::4,free_cancellation::1',
+  //       children_number: '2',
+  //       include_adjacency: 'true'
+  //     },
+  //     headers: {
+  //       'x-rapidapi-host': 'booking-com.p.rapidapi.com',
+  //       'x-rapidapi-key': '8ff3fddc21mshbb4f6d5db856a07p1cbb3ejsn3fa5b0ac771f'
+  //     }
+  //   };
 
-    axios
-      .request(options)
-      .then(function (response) {
-        let newPosts = [];
+  //   axios
+  //     .request(options)
+  //     .then(function (response) {
+  //       let newPosts = [];
 
-        for (let i = 0; i < response.data.result.length; i++) {
-          const newPost = {
-            id: response.data.result[i].hotel_id,
-            title: response.data.result[i].hotel_name,
-            picture: response.data.result[i].max_photo_url,
-            price: response.data.result[i].price_breakdown.currency + " " + response.data.result[i].price_breakdown.all_inclusive_price,
-            country: response.data.result[i].country_trans,
-            city: response.data.result[i].city_trans,
-            review: response.data.result[i].review_score,
-            review_word: response.data.result[i].review_score_word
-          };
-          newPosts.push(newPost);
-        };
+  //       for (let i = 0; i < response.data.result.length; i++) {
+  //         const newPost = {
+  //           id: response.data.result[i].hotel_id,
+  //           title: response.data.result[i].hotel_name,
+  //           picture: response.data.result[i].max_photo_url,
+  //           price: response.data.result[i].price_breakdown.currency + " " + response.data.result[i].price_breakdown.all_inclusive_price,
+  //           country: response.data.result[i].country_trans,
+  //           city: response.data.result[i].city_trans,
+  //           review: response.data.result[i].review_score,
+  //           review_word: response.data.result[i].review_score_word
+  //         };
+  //         newPosts.push(newPost);
+  //       };
 
-        setPosts([...newPosts]);
+  //       setPosts([...newPosts]);
         
-        setPostsLoading(false);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, [destID, props.pageNumber]);
+  //       setPostsLoading(false);
+  //     })
+  //     .catch(function (error) {
+  //       console.error(error);
+  //     });
+  // }, [destID, props.pageNumber]);
 
   // Переключает страницу вперёд при клике на правую стрелку. Перемещает область просмотра вверх.  
   function nextPage() {
@@ -102,6 +103,10 @@ function HotelList(props) {
         setSearchQuery={setSearchQuery}
         onChange={e => setSearchQuery(e.target.value)}
       />
+
+      <div className={styles.filters}>
+        <FilterList />
+      </div>
 
       <div className={styles.hotels}>
         {

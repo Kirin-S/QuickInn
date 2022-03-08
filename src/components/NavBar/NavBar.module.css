@@ -55,20 +55,19 @@ header {
   }
 
   .menuToggle {
+    position: absolute;
     color: #fff;
-    float: right;
     font-size: 18px;
     line-height: 50px;
     cursor: pointer;
-    margin-right: 5px;
-    margin-top: 0px;
+    top: -25px;
+    left: 90%;
     display: block;
   }
 
   .navBar {
     position: absolute;
     width: 100%;
-    height: calc(100vh - 50px);
     top: 50px;
     left: -100%;
     transition: 0.5s;
@@ -83,4 +82,11 @@ header {
     border-bottom: 1px solid rgba(0,0,0,0.2);
   }
   
+}
+
+/* КОСТЫЛЬ */
+@media (max-width: 830px) {
+  .menuToggle {
+    top: -1px;
+  }
 }

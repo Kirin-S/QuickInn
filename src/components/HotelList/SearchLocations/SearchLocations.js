@@ -20,45 +20,45 @@ function SearchLocations(props) {
   // Задержка вызова API
   const debounce = useDebounce(props.value, 500);
 
-  useEffect(() => {
-    if (debounce) {
+  // useEffect(() => {
+  //   if (debounce) {
 
-      const axios = require("axios").default;
+  //     const axios = require("axios").default;
 
-      const options = {
-        method: 'GET',
-        url: 'https://booking-com.p.rapidapi.com/v1/hotels/locations',
-        params: {locale: 'en-gb', name: props.value},
-        headers: {
-          'x-rapidapi-host': 'booking-com.p.rapidapi.com',
-          'x-rapidapi-key': '8ff3fddc21mshbb4f6d5db856a07p1cbb3ejsn3fa5b0ac771f'
-        }
-      };
+  //     const options = {
+  //       method: 'GET',
+  //       url: 'https://booking-com.p.rapidapi.com/v1/hotels/locations',
+  //       params: {locale: 'en-gb', name: props.value},
+  //       headers: {
+  //         'x-rapidapi-host': 'booking-com.p.rapidapi.com',
+  //         'x-rapidapi-key': '8ff3fddc21mshbb4f6d5db856a07p1cbb3ejsn3fa5b0ac771f'
+  //       }
+  //     };
 
-      axios.request(options).then(function (response) {
-        let districtArr = [];
+  //     axios.request(options).then(function (response) {
+  //       let districtArr = [];
 
-        // Коммент, сделанный с помощью расширения AI Doc Writer
-        /* It's a loop that iterates over the response.data array and creates an object
-        with the district's name, region, country and dest_id. */
-        response.data.forEach((district) => {
-          const result = {
-            name: district.name,
-            region: district.region,
-            country: district.country,
-            dest_id: district.dest_id,
-          }
+  //       // Коммент, сделанный с помощью расширения AI Doc Writer
+  //       /* It's a loop that iterates over the response.data array and creates an object
+  //       with the district's name, region, country and dest_id. */
+  //       response.data.forEach((district) => {
+  //         const result = {
+  //           name: district.name,
+  //           region: district.region,
+  //           country: district.country,
+  //           dest_id: district.dest_id,
+  //         }
 
-          districtArr.push(result);
-        });
+  //         districtArr.push(result);
+  //       });
 
-        setLocations([...districtArr]);
-      }).catch(function (error) {
-        console.error(error);
-      });
+  //       setLocations([...districtArr]);
+  //     }).catch(function (error) {
+  //       console.error(error);
+  //     });
 
-    }
-  }, [debounce]);
+  //   }
+  // }, [debounce]);
 
   function onInputClick() {
     setTips(true);

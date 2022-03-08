@@ -16,3 +16,12 @@
   font-size: 32px;
   margin: 0 10px;
 }
+
+.filters {
+  position: absolute;
+  width: 20%;
+  line-height: 45px;
+  height: 50px;
+  margin: 0 60% 0 1%;
+  top: 70px;
+}
