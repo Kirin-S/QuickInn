@@ -1,6 +1,9 @@
 import styles from "./FilterList.module.css";
+import Slider from "../../UI/Slider/SliderWrapper";
 
 function FilterList() {
+  
+
   return ( 
     <div>
       <div className={styles.title}>
@@ -9,12 +12,13 @@ function FilterList() {
 
       <div className={styles.adults_number}>
         <p>Amount of adults</p>
+        <Slider />
       </div>
 
       <div className={styles.children_number}>
         <p>Amount of chidlren</p>
+        <Slider />
       </div>
-
     </div>
   );
 }
