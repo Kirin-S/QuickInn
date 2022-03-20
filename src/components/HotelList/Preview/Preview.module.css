@@ -91,7 +91,7 @@ a:hover {
   float: right;
 }
 
-@media (max-width: 830px){
+@media (max-width: 830px) {
   .post_content {
     flex-direction: column;
     padding: 2.5rem;

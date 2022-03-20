@@ -12,15 +12,17 @@ import { useSelector } from "react-redux";
 
 function HotelList(props) {
   let [posts, setPosts] = useState([
-    {id: "987654", title: "Ban", price: "100", url: "localhost:3000/#", country: "SOME_COUNTRY", city: "SOME_CITY", review: "10", review_word: "SUPER"},
-    {id: "654321", title: "Miss", price: "100", url: "localhost:3000/#", country: "England", city: "SOME_CITY", review: "10", review_word: "SUPER"},
-    {id: "321987", title: "Hotel", price: "1000", url: "localhost:3000/#", country: "USA", city: "SOME_CITY", review: "10", review_word: "SUPER"},
+    // {id: "987654", title: "Ban", price: "100", url: "localhost:3000/#", country: "SOME_COUNTRY", city: "SOME_CITY", review: "10", review_word: "SUPER"},
+    // {id: "654321", title: "Miss", price: "100", url: "localhost:3000/#", country: "England", city: "SOME_CITY", review: "10", review_word: "SUPER"},
+    // {id: "321987", title: "Hotel", price: "1000", url: "localhost:3000/#", country: "USA", city: "SOME_CITY", review: "10", review_word: "SUPER"},
   ]);
 
   const destID = useSelector((state) => state.destID);
 
-  const [searchQuery, setSearchQuery] = useState('');  // Поиск
+  const [searchQuery, setSearchQuery] = useState("");  // Поиск по городу
   const [isPostsLoading, setPostsLoading] = useState(false);
+  const [stars, setStars] = useState("class::0");
+  const [rating, setRating] = useState("reviewscorebuckets::50");
 
   // useEffect(() => {
   //   setPostsLoading(true);
@@ -43,7 +45,7 @@ function HotelList(props) {
   //       units: 'metric',
   //       children_ages: '5,0',
   //       page_number: props.pageNumber,
-  //       categories_filter_ids: 'class::2,class::4,free_cancellation::1',
+  //       categories_filter_ids: stars + "," + rating,
   //       children_number: '2',
   //       include_adjacency: 'true'
   //     },
@@ -79,7 +81,7 @@ function HotelList(props) {
   //     .catch(function (error) {
   //       console.error(error);
   //     });
-  // }, [destID, props.pageNumber]);
+  // }, [destID, props.pageNumber, stars, rating]);
 
   // Переключает страницу вперёд при клике на правую стрелку. Перемещает область просмотра вверх.  
   function nextPage() {
@@ -105,7 +107,7 @@ function HotelList(props) {
       />
 
       <div className={styles.filters}>
-        <FilterList />
+        <FilterList getStars={setStars} getRate={setRating} />
       </div>
 
       <div className={styles.hotels}>
