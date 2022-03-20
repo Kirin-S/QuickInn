@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <div className="navBar">
-            <NavBar />
+          <NavBar />
         </div>
         <HotelID.Provider value={{hotel_id, setHotelID}}>
           <Pages />

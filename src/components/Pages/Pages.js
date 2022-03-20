@@ -13,6 +13,8 @@ import { Provider } from 'react-redux';
 
 const defaultState = {
   destID: '-553173',     // Дефолт ID Праги
+  starCount: 'class::0',
+  rating: 'reviewscorebuckets::999',
   // people: {
   //   adultAmount: 1,
   //   childrenAmount: 0
@@ -23,6 +25,12 @@ const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case "getDestID":
       return {...state, destID: action.payload}
+    
+    case "getStarCount":
+      return {...state, starCount: action.payload}
+
+    case "getRating":
+      return {...state, rating: action.payload}
 
     // case "getAmountOfPeople":
     //   return {...state, people: action.payload}
