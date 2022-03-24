@@ -14,27 +14,27 @@ function Rating() {
       <form>
         <div className={styles.radio}>
           <input type="radio" name="rate1" id="radio1" value="999" onChange={onRateClick} />
-          <label htmlFor="radio1">&nbsp;    All</label>
+          <label htmlFor="radio1">&nbsp; All</label>
         </div>
         <div className={styles.radio}>
           <input type="radio" name="rate1" id="radio2" value="50" onChange={onRateClick} />
-          <label htmlFor="radio2">&nbsp;    5+</label>
+          <label htmlFor="radio2">&nbsp; 5+</label>
         </div>
         <div className={styles.radio}>
           <input type="radio" name="rate1" id="radio3" value="60" onChange={onRateClick} />
-          <label htmlFor="radio3">&nbsp;    6+</label>
+          <label htmlFor="radio3">&nbsp; 6+</label>
         </div>
         <div className={styles.radio}>
           <input type="radio" name="rate1" id="radio4" value="70" onChange={onRateClick} />
-          <label htmlFor="radio4">&nbsp;    7+</label>
+          <label htmlFor="radio4">&nbsp; 7+</label>
         </div>
         <div className={styles.radio}>
           <input type="radio" name="rate1" id="radio5" value="80" onChange={onRateClick} />
-          <label htmlFor="radio5">&nbsp;    8+</label>
+          <label htmlFor="radio5">&nbsp; 8+</label>
         </div>
         <div className={styles.radio}>
           <input type="radio" name="rate1" id="radio6" value="90" onChange={onRateClick} />
-          <label htmlFor="radio6">&nbsp;    9+</label>
+          <label htmlFor="radio6">&nbsp; 9+</label>
         </div>
       </form>
     </div>

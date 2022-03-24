@@ -12,9 +12,10 @@ import { Provider } from 'react-redux';
 
 
 const defaultState = {
-  destID: '-553173',     // Дефолт ID Праги
-  starCount: 'class::0',
-  rating: 'reviewscorebuckets::999',
+  destID: '-553173',                    // ID Праги
+  starCount: 'class::0',                // Все звёзды
+  rating: 'reviewscorebuckets::999',    // Все оценки
+  facilities: '',
   // people: {
   //   adultAmount: 1,
   //   childrenAmount: 0
@@ -31,6 +32,14 @@ const reducer = (state = defaultState, action) => {
 
     case "getRating":
       return {...state, rating: action.payload}
+    
+    case "getFacilities":
+      if (state.facilities.indexOf(action.payload) === -1) {
+        return {...state, facilities: state.facilities + "," + action.payload}
+      }
+      if (state.facilities.indexOf(action.payload) !== -1) {
+        return {...state, facilities: state.facilities.replace("," + action.payload, "")}
+      }
 
     // case "getAmountOfPeople":
     //   return {...state, people: action.payload}
@@ -52,15 +61,16 @@ function Pages() {
     <Routes>
       <Route path="/" element={<MainPage />}/>
       
-        <Route path={`/hotels/${pageNumber}/`} element={
-          <Provider store={store}>
-            <HotelList
-              pageNumber={pageNumber}
-              setPageNumber={setPageNumber}
-            />
-          </Provider>
-          }
-        />
+      <Route path={`/hotels/${pageNumber}/`} element={
+        <Provider store={store}>
+          <HotelList
+            pageNumber={pageNumber}
+            setPageNumber={setPageNumber}
+          />
+        </Provider>
+        }
+      />
+      
       <Route path={`/hotels/${pageNumber}/${hotel_id}/`} element={
         <Hotel
           idOfHotel={hotel_id}

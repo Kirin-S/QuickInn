@@ -1,0 +1,68 @@
+.tags {
+  position: absolute;
+  top: 380px;
+
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.tags p {
+  color: rgba(88, 106, 223, 0.5);
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.tags form {
+  margin-top: 10px;
+  padding: 0;
+}
+
+.checkBox {
+  padding: 0 10px 10px 15px;
+  display: inline-flex;
+  color: rgba(88, 106, 223, 0.5);
+  line-height: 25px;
+}
+
+.tags form {
+  margin-top: -5px;
+}
+
+.checkBox input {
+  display: none;
+}
+
+.fake {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(88, 106, 223, 0.5);
+  position: relative;
+}
+
+.fake::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: rgba(88, 106, 223, 0.5);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: .15s;
+}
+
+.checkBox input:checked + .fake::before {
+  opacity: 1;
+}
+
+.text {
+  position: relative;
+  top: -3px;
+}

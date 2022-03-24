@@ -1,5 +1,6 @@
 import styles from "./FilterList.module.css";
 import Stars from "./Stars/Stars";
+import HotelFacilities from "./HotelFacilities/HotelFacilities";
 import Rating from "./Rating/Rating";
 
 // import Slider from "../../UI/Slider/SliderWrapper";
@@ -22,16 +23,6 @@ function FilterList(props) {
   //   dispatch({type: "getAmountOfPeople", payload: people});
   // }, [adultAmount, childrenAmount]);
 
-  
-
-  function onRateClick(event) {
-    props.getRate(`reviewscorebuckets::${event.target.value}`);
-  }
-
-  function onStarClick(event) {
-    props.getStars(`class::${event.target.value}`)
-  }
-
   return ( 
     <div>
       <div className={styles.title}>
@@ -40,10 +31,7 @@ function FilterList(props) {
 
       <Rating />
       <Stars />
-
-      <div className={styles.tags}>
-        as;dfljh
-      </div>
+      <HotelFacilities />
 
       {/* <div className={styles.adults_number}>
         <p>Amount of adults</p>

@@ -18,13 +18,12 @@ function HotelList(props) {
   ]);
 
   const destID = useSelector((state) => state.destID);
+  const starCount = useSelector((state) => state.starCount);
+  const rating = useSelector((state) => state.rating);
+  const facilities = useSelector((state) => state.facilities);
 
   const [searchQuery, setSearchQuery] = useState("");  // Поиск по городу
   const [isPostsLoading, setPostsLoading] = useState(false);
-  // const [stars, setStars] = useState("class::0");
-  const starCount = useSelector((state) => state.starCount);
-  const rating = useSelector((state) => state.rating);
-  // const [rating, setRating] = useState("reviewscorebuckets::50");
 
   useEffect(() => {
     setPostsLoading(true);
@@ -47,7 +46,7 @@ function HotelList(props) {
         units: 'metric',
         children_ages: '5,0',
         page_number: props.pageNumber,
-        categories_filter_ids: starCount + "," + rating,
+        categories_filter_ids: starCount + "," + rating + facilities,
         children_number: '2',
         include_adjacency: 'true'
       },
@@ -83,7 +82,7 @@ function HotelList(props) {
       .catch(function (error) {
         console.error(error);
       });
-  }, [destID, props.pageNumber, starCount, rating]);
+  }, [destID, props.pageNumber, starCount, rating, facilities]);
 
   // Переключает страницу вперёд при клике на правую стрелку. Перемещает область просмотра вверх.  
   function nextPage() {
