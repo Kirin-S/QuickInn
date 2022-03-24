@@ -1,22 +1,10 @@
 import styles from "./HotelFacilities.module.css";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 function HotelFacilities() {
-  const [facilities, setFacilities] = useState([]);
-
   const dispatch = useDispatch();
 
   function onFacilityClick(event) {
-    // if (event.target.checked && facilities.indexOf(event.target.value) === -1) {
-    //   setFacilities([...facilities, event.target.value]);
-    // }
-    // else {
-    //   let arr = facilities;
-    //   arr.splice(arr.indexOf(event.target.value), 1);
-    //   setFacilities([...arr]);
-    // }
-
     dispatch({type: "getFacilities", payload: event.target.value});
   }
   

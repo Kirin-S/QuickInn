@@ -18,7 +18,7 @@ function Stars() {
         <div className={styles.starPic}>
           <div className={styles.radio}>
             <input type="radio" name="rate2" id="radio7" value="0" onChange={onStarClick} />
-            <label htmlFor="radio7">&nbsp; All</label>
+            <label htmlFor="radio7">&nbsp; Unrated</label>
           </div>
           <div className={styles.radio}>
             <input type="radio" name="rate2" id="radio8" value="2" onChange={onStarClick} />

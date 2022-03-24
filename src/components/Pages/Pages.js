@@ -13,8 +13,8 @@ import { Provider } from 'react-redux';
 
 const defaultState = {
   destID: '-553173',                    // ID Праги
-  starCount: 'class::0',                // Все звёзды
-  rating: 'reviewscorebuckets::999',    // Все оценки
+  starCount: 'class::3',                // Все звёзды
+  rating: 'reviewscorebuckets::50',    // Все оценки
   facilities: '',
   // people: {
   //   adultAmount: 1,

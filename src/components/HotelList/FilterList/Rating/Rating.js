@@ -14,7 +14,7 @@ function Rating() {
       <form>
         <div className={styles.radio}>
           <input type="radio" name="rate1" id="radio1" value="999" onChange={onRateClick} />
-          <label htmlFor="radio1">&nbsp; All</label>
+          <label htmlFor="radio1">&nbsp; No rating</label>
         </div>
         <div className={styles.radio}>
           <input type="radio" name="rate1" id="radio2" value="50" onChange={onRateClick} />

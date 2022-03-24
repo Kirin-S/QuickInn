@@ -84,18 +84,20 @@ function Hotel(props) {
 
         <div className={styles.title}>{data.title}</div>
 
+        {/* Фотки */}
         <div className={styles.photos}>
           <img src={photos[photoIndex]} alt="Нет картинки" className={styles.currentPhoto} />
           <div className={styles.leftArrowBtn}>
             <LeftArrowBtn onClick={onLeftArrowBtnClick}/>
           </div>
-          <div className={styles.RightArrowBtn}>
+          <div className={styles.rightArrowBtn}>
             <RightArrowBtn onClick={onRightArrowBtnClick}/>
           </div>
         </div>
 
         <div className={styles.review}>RATING {data.review}</div>
 
+        {/* Описание */}
         {
           data.descriptionP1
           ?
@@ -105,12 +107,15 @@ function Hotel(props) {
               <p>{data.descriptionP2}</p>
             </div>
           :
-            <p style={{position: "absolute", top: "30%", left: "60%", fontSize: "24px"}}>К сожалению, описание данного отеля отсутствует.</p>
+            <p style={{position: "absolute", top: "30%", left: "60%", fontSize: "24px", color: "#fff"}}>К сожалению, описание данного отеля отсутствует.</p>
         }
 
-        {/* <div className="hotel_on_map">КАРТА</div> */}
+        {/* Календарь */}
+        <div className={styles.date}>
+          <input type="date" />
+        </div>
 
-        {/* <div className="facilities">ВОЗМОЖНОСТИ ОТЕЛЯ</div> */}
+        {/* <div className="hotel_on_map">КАРТА</div> */}
 
         {/* <div className="payment">ПЛАТЁЖНЫЕ ОСОБЕННОСТИ</div> */}
 
