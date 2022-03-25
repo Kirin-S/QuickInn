@@ -1,0 +1,26 @@
+.photos {
+  position: absolute;
+  width: 40%;
+  height: 50%;
+  left: 40px;
+  top: 180px;
+}
+
+.currentPhoto {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.leftArrowBtn {
+  position: absolute;
+  top: 47%;
+  left: -3%;
+}
+
+.rightArrowBtn {
+  position: absolute;
+  top: 47%;
+  left: 98%;
+}

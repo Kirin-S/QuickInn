@@ -1,0 +1,15 @@
+.description {
+  position: absolute;
+  width: 50%;
+  height: auto;
+  left: 47%;
+  top: 200px;
+  font-size: 18px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.description p {
+  color: rgba(88, 106, 223, 0.5);
+}

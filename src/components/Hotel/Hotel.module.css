@@ -24,7 +24,7 @@
   color: #fff;
 }
 
-.description {
+/* .description {
   position: absolute;
   width: 50%;
   height: auto;
@@ -38,9 +38,9 @@
 
 .description p {
   color: rgba(88, 106, 223, 0.5);
-}
+} */
 
-.photos {
+/* .photos {
   position: absolute;
   width: 40%;
   height: 50%;
@@ -65,9 +65,9 @@
   position: absolute;
   top: 47%;
   left: 98%;
-}
+} */
 
-.arrivalDate {
+/* .arrivalDate {
   position: absolute;
   top: 75%;
   left: 1%;
@@ -107,4 +107,4 @@
   display: flex;
   margin-top: 15px;
   justify-content: center;
-}
+} */

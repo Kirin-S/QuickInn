@@ -1,16 +1,13 @@
 import styles from './Hotel.module.css';
-import LeftArrowBtn from '../UI/ArrowBtns/LeftArrowBtn';
-import RightArrowBtn from '../UI/ArrowBtns/RightArrowBtn';
-import DatePicker from 'sassy-datepicker';
+import Description from './Description/Description';
+import HotelPhotos from './HotelPhotos/HotelPhotos';
+import Calendar from './Calendar/Calendar';
 
 import { useState, useEffect } from 'react';
 
 function Hotel(props) {
   const [data, setData] = useState({});             // Инфа про отель
   const [photos, setPhotos] = useState([]);         // Фотки отеля
-  const [photoIndex, setPhotoIndex] = useState(0);  // Номер отображаемой фотки
-  const [arrivalDate, setArrivalDate] = useState("1970-01-01");
-  const [departureDate, setDepartureDate] = useState("1970-01-01");
 
   useEffect(() => {
     const axios = require("axios").default;
@@ -73,72 +70,19 @@ function Hotel(props) {
     });
   }, []);
 
-  function onLeftArrowBtnClick() {
-    photoIndex > 0 ? setPhotoIndex(photoIndex - 1) : setPhotoIndex(photos.length - 1);
-  }
-
-  function onRightArrowBtnClick() {
-    photoIndex < photos.length ? setPhotoIndex(photoIndex + 1) : photoIndex = 0;
-  }
-
-  function onArrivalDatePick(date) {
-    setArrivalDate(date);
-  }
-
-  function onDepartureDatePick(date) {
-    setDepartureDate(date);
-  }
-
-  const dayDif = (date1, date2) => Math.ceil(Math.abs(date1 - date2) / 86400000);
-  useEffect(() => {
-    console.log(dayDif(arrivalDate, departureDate));
-  }, [arrivalDate, departureDate]);
-
   return (
     <div className={styles.page}>
       <div>
 
         <div className={styles.title}>{data.title}</div>
 
-        {/* Фотки */}
-        <div className={styles.photos}>
-          <img src={photos[photoIndex]} alt="Нет картинки" className={styles.currentPhoto} />
-          <div className={styles.leftArrowBtn}>
-            <LeftArrowBtn onClick={onLeftArrowBtnClick}/>
-          </div>
-          <div className={styles.rightArrowBtn}>
-            <RightArrowBtn onClick={onRightArrowBtnClick}/>
-          </div>
-        </div>
+        <HotelPhotos photos={photos}/>
 
         <div className={styles.review}>RATING {data.review}</div>
 
-        {/* Описание */}
-        {
-          data.descriptionP1
-          ?
-            <div className={styles.description}>
-              <p>{data.descriptionP1}</p>
-              <br/>
-              <p>{data.descriptionP2}</p>
-            </div>
-          :
-            <p style={{position: "absolute", top: "30%", left: "60%", fontSize: "24px", color: "#fff"}}>К сожалению, описание данного отеля отсутствует.</p>
-        }
+        <Description descriptionP1={data.descriptionP1} descriptionP2={data.descriptionP2} />
 
-        {/* Календарь */}
-        <div className={styles.arrivalDate}>
-          <p>Arrival date</p>
-          <div className={styles.calendar}>
-            <DatePicker onChange={onArrivalDatePick}/>
-          </div>
-        </div>
-        <div className={styles.departureDate}>
-          <p>Departure date</p>
-          <div className={styles.calendar}>
-            <DatePicker onChange={onDepartureDatePick}/>
-          </div>
-        </div>
+        <Calendar />
 
         {/* <div className="hotel_on_map">КАРТА</div> */}
 
