@@ -1,6 +1,7 @@
 import styles from './Hotel.module.css';
-import LeftArrowBtn from '../UI/ArrowBtns/LeftArrowBtn'
-import RightArrowBtn from '../UI/ArrowBtns/RightArrowBtn'
+import LeftArrowBtn from '../UI/ArrowBtns/LeftArrowBtn';
+import RightArrowBtn from '../UI/ArrowBtns/RightArrowBtn';
+import DatePicker from 'sassy-datepicker';
 
 import { useState, useEffect } from 'react';
 
@@ -78,6 +79,10 @@ function Hotel(props) {
     photoIndex < photos.length ? setPhotoIndex(photoIndex + 1) : photoIndex = 0;
   }
 
+  function onDatePick(date) {
+    console.log(date);
+  }
+
   return (
     <div className={styles.page}>
       <div>
@@ -111,8 +116,17 @@ function Hotel(props) {
         }
 
         {/* Календарь */}
-        <div className={styles.date}>
-          <input type="date" />
+        <div className={styles.arrivalDate}>
+          <p>Arrival date</p>
+          <div className={styles.calendar}>
+            <DatePicker onChange={onDatePick}/>
+          </div>
+        </div>
+        <div className={styles.departureDate}>
+          <p>Departure date</p>
+          <div className={styles.calendar}>
+            <DatePicker onChange={onDatePick}/>
+          </div>
         </div>
 
         {/* <div className="hotel_on_map">КАРТА</div> */}
