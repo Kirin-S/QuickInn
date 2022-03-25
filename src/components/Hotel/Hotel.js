@@ -9,6 +9,8 @@ function Hotel(props) {
   const [data, setData] = useState({});             // Инфа про отель
   const [photos, setPhotos] = useState([]);         // Фотки отеля
   const [photoIndex, setPhotoIndex] = useState(0);  // Номер отображаемой фотки
+  const [arrivalDate, setArrivalDate] = useState("1970-01-01");
+  const [departureDate, setDepartureDate] = useState("1970-01-01");
 
   useEffect(() => {
     const axios = require("axios").default;
@@ -79,9 +81,18 @@ function Hotel(props) {
     photoIndex < photos.length ? setPhotoIndex(photoIndex + 1) : photoIndex = 0;
   }
 
-  function onDatePick(date) {
-    console.log(date);
+  function onArrivalDatePick(date) {
+    setArrivalDate(date);
   }
+
+  function onDepartureDatePick(date) {
+    setDepartureDate(date);
+  }
+
+  const dayDif = (date1, date2) => Math.ceil(Math.abs(date1 - date2) / 86400000);
+  useEffect(() => {
+    console.log(dayDif(arrivalDate, departureDate));
+  }, [arrivalDate, departureDate]);
 
   return (
     <div className={styles.page}>
@@ -119,13 +130,13 @@ function Hotel(props) {
         <div className={styles.arrivalDate}>
           <p>Arrival date</p>
           <div className={styles.calendar}>
-            <DatePicker onChange={onDatePick}/>
+            <DatePicker onChange={onArrivalDatePick}/>
           </div>
         </div>
         <div className={styles.departureDate}>
           <p>Departure date</p>
           <div className={styles.calendar}>
-            <DatePicker onChange={onDatePick}/>
+            <DatePicker onChange={onDepartureDatePick}/>
           </div>
         </div>
 
