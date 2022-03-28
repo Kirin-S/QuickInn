@@ -31,7 +31,7 @@ function NavBar() {
   }
 
   return (
-    <header>
+    <header className={styles.quickInn}>
       <Link to="/"><img src={logo} className={styles.logo}/></Link>
 
       <div className={styles.navBar} ref={visability}>

@@ -1,13 +1,15 @@
 import styles from './Hotel.module.css';
 import Description from './Description/Description';
 import HotelPhotos from './HotelPhotos/HotelPhotos';
-import Calendar from './Calendar/Calendar';
+import DateRange from './DateRange/DateRange';
+import Cost from './Cost/Cost';
 
 import { useState, useEffect } from 'react';
 
 function Hotel(props) {
   const [data, setData] = useState({});             // Инфа про отель
   const [photos, setPhotos] = useState([]);         // Фотки отеля
+  const [dayCount, setDayCount] = useState(1);
 
   useEffect(() => {
     const axios = require("axios").default;
@@ -28,10 +30,12 @@ function Hotel(props) {
         title: response.data.name,
         review: response.data.review_score,
         descriptionP1: '',
-        descriptionP2: ''
+        descriptionP2: '',
+        price: response.data.minrate,
+        currency: response.data.currencycode
       }
 
-      // Костыль. Не у всех отелей два описания.
+      // Костыль. Не у всех отелей есть описание
       if (response.data.description_translations) {
         if (response.data.description_translations[0]) {
           info.descriptionP1 = response.data.description_translations[0].description;
@@ -72,25 +76,20 @@ function Hotel(props) {
 
   return (
     <div className={styles.page}>
-      <div>
 
-        <div className={styles.title}>{data.title}</div>
+      <div className={styles.title}>{data.title}</div>
+      <div className={styles.review}>RATING {data.review}</div>
 
-        <HotelPhotos photos={photos}/>
+      <HotelPhotos photos={photos}/>
+      <Description descriptionP1={data.descriptionP1} descriptionP2={data.descriptionP2} />
+      <DateRange setDayCount={setDayCount} />
+      <Cost dayCount={dayCount} price={data.price} currency={data.currency} />
 
-        <div className={styles.review}>RATING {data.review}</div>
+      {/* <div className="hotel_on_map">КАРТА</div> */}
 
-        <Description descriptionP1={data.descriptionP1} descriptionP2={data.descriptionP2} />
+      {/* <div className="payment">ПЛАТЁЖНЫЕ ОСОБЕННОСТИ</div> */}
 
-        <Calendar />
-
-        {/* <div className="hotel_on_map">КАРТА</div> */}
-
-        {/* <div className="payment">ПЛАТЁЖНЫЕ ОСОБЕННОСТИ</div> */}
-
-        {/* <div className="tips">СОВЕТЫ ДЛЯ ГОСТЕЙ</div> */}
-
-      </div>
+      {/* <div className="tips">СОВЕТЫ ДЛЯ ГОСТЕЙ</div> */}
     </div>
   );
 }

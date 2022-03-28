@@ -1,0 +1,23 @@
+.dateRange {
+  position: absolute;
+  top: 80%;
+  left: 10%;
+  width: 280px;
+  height: 70px;
+  background-color: #fff;
+  color: rgba(88, 106, 223, 0.5);
+  border-radius: 10px;
+  font-size: 28px;
+}
+
+.dateRange p {
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
+}
+
+.calendar {
+  font-size: 22px;
+  width: 100%;
+  margin: 30px 0;
+}

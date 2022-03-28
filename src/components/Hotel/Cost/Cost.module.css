@@ -1,0 +1,90 @@
+.container {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  width: 30%;
+  height: 200px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.container p {
+  color: #ACB5EF;
+  font-size: 24px;
+  text-align: center;
+}
+
+.roomPrice {
+  position: absolute;
+  margin: 5% 0 0 10%;
+  width: 20%;
+}
+
+.roomNumber {
+  position: absolute;
+  margin: 5% 0 0 40%;
+  width: 20%;
+}
+
+.totalPrice {
+  position: absolute;
+  margin: 5% 0 0 75%;
+  width: 10%;
+}
+
+.rectangle {
+  width: 90px;
+  height: 90px;
+  border: 2px solid #ACB5EF;
+  border-radius: 8px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.roomPrice .rectangle {
+  margin-left: 12px;
+}
+
+.roomNumber .rectangle {
+  margin-left: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.totalPrice .rectangle {
+  margin-left: -15px;
+  padding-top: 20%;
+}
+
+.multiply {
+  position: absolute;
+  top: 60%;
+  left: 33%;
+  font-size: 50px;
+  color: #ACB5EF;
+}
+
+.equals {
+  position: absolute;
+  top: 55%;
+  left: 63%;
+  font-size: 50px;
+  color: #ACB5EF;
+}
+
+.roomNumberInput {
+  border: none;
+  border-bottom: 2px solid #ACB5EF;
+  width: 40%;
+  margin-top: 15px;
+  height: 26px;
+  font-size: 24px;
+  color: #ACB5EF;
+  outline: none;
+  text-align: center;
+  transition: width .2s linear;
+}
+
+.roomNumberInput:focus {
+  width: 100%;
+}
